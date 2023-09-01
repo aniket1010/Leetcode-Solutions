@@ -1,30 +1,34 @@
 // Approach 1 -> For each row check if matrix[i][0] <= target && target <= matrix[i][j-1]
-// If yes , pass that row to Binary Search Function 
-// Return bS(mat[i]) , doing so will only pass the single row as an 1d array to bS function
-// Time complexity -> O(N) + O(log m)
+// If yes, pass that row to Binary Search Function
+// Return bS(mat[i]), doing so will only pass the single row as a 1D array to bS function
 
+// Approach 2 -> Treat the array as 2d matrix
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
-        
-        // Treat the matrix as an 1D array of size (n*m)
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return false;
+        }
+
         int rows = matrix.length;
         int cols = matrix[0].length;
-        int low = 0 , high = rows*cols -1;
+        int low = 0;
+        int high = rows * cols - 1;
 
-        while(low<=high){
-
+        while (low <= high) {
             int mid = low + (high - low) / 2;
             int midR = mid / cols;
             int midC = mid % cols;
+            int midValue = matrix[midR][midC];
 
-            if(target == matrix[midR][midC])return true;
+            if (target == midValue) {
+                return true;
+            } else if (target < midValue) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
 
-            else if ( target > matrix[midR][midC]) low = mid + 1;
-
-            else high = mid - 1;
-        } 
-         
-         return false;
-        
+        return false;
     }
 }
