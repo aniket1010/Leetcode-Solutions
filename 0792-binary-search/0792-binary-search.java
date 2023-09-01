@@ -1,3 +1,4 @@
+// Date - Sept 01 2023
 class Solution {
     public int search(int[] nums, int target) {
         
@@ -6,7 +7,7 @@ class Solution {
 
         while(lo<=hi){
 
-            int mid = (hi+lo)/2;
+            int mid = lo + (hi-lo)/2; // Eliminates Integer Overflow
 
             if(nums[mid]==target){
                 return mid;
