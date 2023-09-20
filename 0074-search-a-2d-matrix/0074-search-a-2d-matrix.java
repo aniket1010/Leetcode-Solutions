@@ -2,7 +2,7 @@
 // If yes, pass that row to Binary Search Function
 // Return bS(mat[i]), doing so will only pass the single row as a 1D array to bS function
 
-// Approach 2 -> Treat the array as 2d matrix
+// Approach 2 -> Treat the 2d as 1d array
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
